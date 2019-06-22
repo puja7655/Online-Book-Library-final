@@ -1,0 +1,44 @@
+<div class='col-md-12'>
+   <h3> {{pageTitle}}</h3>
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-1'>Filter :</div>
+      <div class='col-md-2'>
+       <span> <input type='text' placeholder="Enter Book Name" [(ngModel)]='listFilter' /></span>
+       <span></span> <button class='resetBtn' (click)="reset()"> Reset </button></div>
+      </div>
+
+    </div>
+    <div class='row'>
+      <div class='col-md-6'>
+        <h3>Filtered By:{{listFilter}}</h3>
+      </div>
+    </div>
+    <div class=' bookTable'  id="123">
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Count</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor='let book of rowData' >
+            <tr *ngIf="filterCondition(book)">
+              <td class='hidden'>{{book.id}}</td>
+              <td>{{book.bookName |uppercase}}</td>
+              <td>{{book.authorName |uppercase}}</td>
+              <td>{{book.count}}</td>
+              <td>{{book.description |lowercase}}</td>
+           <td> <button (click)="editBook(book)" style="margin-left: 20px;" class="btn btn-info"> Edit</button>  
+          </td>
+            </tr>
+            </ng-container>
+        </tbody>
+      </table>
+  </div>
+</div>

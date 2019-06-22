@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Online-Book-Store';
+
+  addBook() {
+    localStorage.removeItem('editBookId');
+  }
 }
